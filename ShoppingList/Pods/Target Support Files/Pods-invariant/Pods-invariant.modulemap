@@ -1,0 +1,6 @@
+framework module Pods_invariant {
+  umbrella header "Pods-invariant-umbrella.h"
+
+  export *
+  module * { export * }
+}
