@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		441F6A00E8DC29A5A11F7638 /* Pods_invariant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A2CDD002EE831504E33DF3F /* Pods_invariant.framework */; };
+		9D550FB12B79A0EA00447715 /* NoteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D550FB02B79A0EA00447715 /* NoteItem.swift */; };
 		9DAC1C4E2B74F3A5005E8BC8 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAC1C4D2B74F3A5005E8BC8 /* ListTableViewCell.swift */; };
-		9DC824052B7543DC001FA6A6 /* AddNewItem.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DC824042B7543DC001FA6A6 /* AddNewItem.storyboard */; };
-		9DC824072B7543EA001FA6A6 /* AddNewItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC824062B7543EA001FA6A6 /* AddNewItemViewController.swift */; };
+		9DC824052B7543DC001FA6A6 /* ItemManager.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DC824042B7543DC001FA6A6 /* ItemManager.storyboard */; };
+		9DC824072B7543EA001FA6A6 /* ItemManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC824062B7543EA001FA6A6 /* ItemManagerViewController.swift */; };
 		9DE29AC52B74D75F00D017D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE29AC42B74D75F00D017D3 /* AppDelegate.swift */; };
 		9DE29AC72B74D75F00D017D3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE29AC62B74D75F00D017D3 /* SceneDelegate.swift */; };
 		9DE29AC92B74D75F00D017D3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE29AC82B74D75F00D017D3 /* ViewController.swift */; };
@@ -25,9 +26,10 @@
 /* Begin PBXFileReference section */
 		2431EED3DC412205E8C6E218 /* Pods-invariant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-invariant.debug.xcconfig"; path = "Target Support Files/Pods-invariant/Pods-invariant.debug.xcconfig"; sourceTree = "<group>"; };
 		3A2CDD002EE831504E33DF3F /* Pods_invariant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_invariant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D550FB02B79A0EA00447715 /* NoteItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteItem.swift; sourceTree = "<group>"; };
 		9DAC1C4D2B74F3A5005E8BC8 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
-		9DC824042B7543DC001FA6A6 /* AddNewItem.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddNewItem.storyboard; sourceTree = "<group>"; };
-		9DC824062B7543EA001FA6A6 /* AddNewItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewItemViewController.swift; sourceTree = "<group>"; };
+		9DC824042B7543DC001FA6A6 /* ItemManager.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ItemManager.storyboard; sourceTree = "<group>"; };
+		9DC824062B7543EA001FA6A6 /* ItemManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemManagerViewController.swift; sourceTree = "<group>"; };
 		9DE29AC12B74D75F00D017D3 /* ShoppingList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShoppingList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DE29AC42B74D75F00D017D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9DE29AC62B74D75F00D017D3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,8 +76,8 @@
 		9DC824032B7543C1001FA6A6 /* AddItem */ = {
 			isa = PBXGroup;
 			children = (
-				9DC824042B7543DC001FA6A6 /* AddNewItem.storyboard */,
-				9DC824062B7543EA001FA6A6 /* AddNewItemViewController.swift */,
+				9DC824042B7543DC001FA6A6 /* ItemManager.storyboard */,
+				9DC824062B7543EA001FA6A6 /* ItemManagerViewController.swift */,
 			);
 			path = AddItem;
 			sourceTree = "<group>";
@@ -129,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				9DE29AE12B74DBD900D017D3 /* ShoppingListItem.swift */,
+				9D550FB02B79A0EA00447715 /* NoteItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -194,7 +197,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DE29AD12B74D76000D017D3 /* LaunchScreen.storyboard in Resources */,
-				9DC824052B7543DC001FA6A6 /* AddNewItem.storyboard in Resources */,
+				9DC824052B7543DC001FA6A6 /* ItemManager.storyboard in Resources */,
 				9DE29ACE2B74D76000D017D3 /* Assets.xcassets in Resources */,
 				9DE29ADA2B74D96100D017D3 /* ShoppingList.storyboard in Resources */,
 				9DE29ACC2B74D75F00D017D3 /* Main.storyboard in Resources */,
@@ -251,11 +254,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DE29AC92B74D75F00D017D3 /* ViewController.swift in Sources */,
-				9DC824072B7543EA001FA6A6 /* AddNewItemViewController.swift in Sources */,
+				9DC824072B7543EA001FA6A6 /* ItemManagerViewController.swift in Sources */,
 				9DE29AC52B74D75F00D017D3 /* AppDelegate.swift in Sources */,
 				9DE29AC72B74D75F00D017D3 /* SceneDelegate.swift in Sources */,
 				9DE29AE22B74DBD900D017D3 /* ShoppingListItem.swift in Sources */,
 				9DE29ADC2B74D97000D017D3 /* ShoppingListViewController.swift in Sources */,
+				9D550FB12B79A0EA00447715 /* NoteItem.swift in Sources */,
 				9DAC1C4E2B74F3A5005E8BC8 /* ListTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

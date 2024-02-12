@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct ShoppingListItem {
+struct ShoppingListItem: Codable {
     private static var idSequence = sequence(first: 1, next: { $0 + 1 })
     
     let id: Int
-    let name: String
-    let amount: Decimal
+    var name: String
+    var amount: Decimal
     let creationDateTime: Date
 
     init(name: String, amount: Decimal) {

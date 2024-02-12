@@ -23,18 +23,39 @@ final class ShoppingListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        test()
+        createMockData()
         setUpTableView()
+        setUpNavigationBar()
     }
     
-    // MARK: -Actions
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        shoppingList = loadShoppingList(forKey: "shoppingList") ?? []
+        shoppingList = shoppingList.sorted { (item1, item2) -> Bool in
+            if item1.name == item2.name {
+                return item1.id > item2.id
+            } else {
+                return item1.name < item2.name
+            }
+        }
+        shoppingListTableView.reloadData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        saveShoppingList(shoppingList, forKey: "shoppingList")
+    }
+    
+    // MARK: - Actions
     
     @IBAction func handleAddNewItemButton() {
         pushAddNewItemViewController()
         shoppingListTableView.reloadData()
     }
     
-    // MARK: -Utility methods
+    // MARK: - Utility methods
     
     private func setUpTableView() {
         shoppingListTableView.rowHeight = UITableView.automaticDimension
@@ -42,22 +63,56 @@ final class ShoppingListViewController: UIViewController {
         shoppingListTableView.delegate = self
     }
     
-    private func pushAddNewItemViewController() {
-        let addNewItemStoryboard = UIStoryboard(name: "AddNewItem", bundle: nil)
-        let addNewItemViewController = addNewItemStoryboard.instantiateViewController(withIdentifier: String(describing: AddNewItemViewController.self)) as! AddNewItemViewController
-        
-        let navigationController = UINavigationController(rootViewController: addNewItemViewController)
-        present(navigationController, animated: true)
+    private func setUpNavigationBar() {
+        navigationController?.navigationBar.tintColor = UIColor(
+            red: 67/255,
+            green: 108/255,
+            blue: 90/255,
+            alpha: 1
+        )
     }
     
-    private func test() {
-        let item = ShoppingListItem(name: "Item name", amount: 10)
-        shoppingList.append(item)
+    private func pushAddNewItemViewController() {
+        let addNewItemStoryboard = UIStoryboard(name: "ItemManager", bundle: nil)
+        let addNewItemViewController = addNewItemStoryboard.instantiateViewController(
+            withIdentifier: String(describing: ItemManagerViewController.self)
+        ) as! ItemManagerViewController
+        
+        navigationController?.pushViewController(addNewItemViewController, animated: true)
+    }
+    
+    private func pushEditItemViewController(forItemAtIndex index: Int) {
+        let editItemStoryboard = UIStoryboard(name: "ItemManager", bundle: nil)
+        let editItemViewController = editItemStoryboard.instantiateViewController(
+            withIdentifier: String(describing: ItemManagerViewController.self)
+        ) as! ItemManagerViewController
+        
+        editItemViewController.itemIndex = index
+        editItemViewController.edit = true
+        navigationController?.pushViewController(editItemViewController, animated: true)
+    }
+    
+    private func createMockData() {
+        let shoppingListItems: [ShoppingListItem] = [
+            ShoppingListItem(name: "Apples", amount: 2.5),
+            ShoppingListItem(name: "Milk", amount: 1.0),
+            ShoppingListItem(name: "Bread", amount: 1.0),
+            ShoppingListItem(name: "Banana", amount: 4)
+        ]
+        
+        let noteItems: [NoteItem] = [
+            NoteItem(title: "Fruit", note: "Amount is in kg", linkedShoppingItems: [shoppingListItems[0], shoppingListItems[3]]),
+            NoteItem(title: "Pick up kids from school", note: "It finishes at 4pm"),
+            NoteItem(title: "Water the plants")
+        ]
+        
+        saveShoppingList(shoppingListItems, forKey: "shoppingList")
+        saveNotesList(noteItems, forKey: "notesList")
     }
     
 }
 
-//MARK: -Table View datasource
+//MARK: - Table View datasource
 
 extension ShoppingListViewController: UITableViewDataSource {
     
@@ -75,7 +130,7 @@ extension ShoppingListViewController: UITableViewDataSource {
     
 }
 
-// MARK: -Table View delegate
+// MARK: - Table View delegate
 
 extension ShoppingListViewController: UITableViewDelegate {
     
@@ -85,6 +140,58 @@ extension ShoppingListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        pushEditItemViewController(forItemAtIndex: indexPath.row)
     }
+    
+}
+
+extension UIViewController {
+    
+    func saveShoppingList(_ item: [ShoppingListItem], forKey key: String) {
+        do {
+            let encoder = JSONEncoder()
+            let data = try encoder.encode(item)
+            UserDefaults.standard.set(data, forKey: key)
+        } catch {
+            print("Error encoding item: \(error)")
+        }
+    }
+    
+    func loadShoppingList(forKey key: String) -> [ShoppingListItem]? {
+        if let data = UserDefaults.standard.data(forKey: key) {
+            do {
+                let decoder = JSONDecoder()
+                let item = try decoder.decode([ShoppingListItem].self, from: data)
+                return item
+            } catch {
+                print("Error decoding item: \(error)")
+            }
+        }
+        return nil
+    }
+    
+    func saveNotesList(_ item: [NoteItem], forKey key: String) {
+        do {
+            let encoder = JSONEncoder()
+            let data = try encoder.encode(item)
+            UserDefaults.standard.set(data, forKey: key)
+        } catch {
+            print("Error encoding item: \(error)")
+        }
+    }
+    
+    func loadNotesList(forKey key: String) -> [NoteItem]? {
+        if let data = UserDefaults.standard.data(forKey: key) {
+            do {
+                let decoder = JSONDecoder()
+                let item = try decoder.decode([NoteItem].self, from: data)
+                return item
+            } catch {
+                print("Error decoding item: \(error)")
+            }
+        }
+        return nil
+    }
+    
     
 }

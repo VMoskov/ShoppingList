@@ -11,7 +11,7 @@
         <!--Add new item-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="AddNewItemViewController" title="Add new item" id="Y6W-OH-hqX" customClass="AddNewItemViewController" customModule="invariant" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ItemManagerViewController" title="Add new item" id="Y6W-OH-hqX" customClass="ItemManagerViewController" customModule="ShoppingList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -36,8 +36,8 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
-                                                    <action selector="itemNameEditingChanged" destination="Y6W-OH-hqX" eventType="editingChanged" id="Ifc-Q6-kCt"/>
-                                                    <action selector="itemNameEditingEnd" destination="Y6W-OH-hqX" eventType="editingDidEnd" id="uij-0Y-Hvc"/>
+                                                    <action selector="itemNameEditingChanged" destination="Y6W-OH-hqX" eventType="editingChanged" id="Zsa-54-1Mg"/>
+                                                    <action selector="itemNameEditingEnd" destination="Y6W-OH-hqX" eventType="editingDidEnd" id="BzM-AT-gVg"/>
                                                 </connections>
                                             </textField>
                                         </subviews>
@@ -59,8 +59,8 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 <connections>
-                                                    <action selector="itemAmountEditingChanged" destination="Y6W-OH-hqX" eventType="editingChanged" id="F8N-1G-89s"/>
-                                                    <action selector="itemAmountEditingEnd" destination="Y6W-OH-hqX" eventType="editingDidEnd" id="Cag-nq-kPf"/>
+                                                    <action selector="itemAmountEditingChanged" destination="Y6W-OH-hqX" eventType="editingChanged" id="YcR-v8-fi0"/>
+                                                    <action selector="itemAmountEditingEnd" destination="Y6W-OH-hqX" eventType="editingDidEnd" id="R80-Ef-UD1"/>
                                                 </connections>
                                             </textField>
                                         </subviews>
@@ -96,8 +96,9 @@
                     </view>
                     <connections>
                         <outlet property="addButton" destination="A77-5z-VdZ" id="2h9-Yw-wQc"/>
-                        <outlet property="itemAmountInputField" destination="mpM-DW-bVC" id="urz-f2-FPH"/>
-                        <outlet property="itemNameInputField" destination="Jyd-az-ocj" id="bBs-G2-MVN"/>
+                        <outlet property="animatingView" destination="lEc-7F-ROC" id="7JW-QM-wSP"/>
+                        <outlet property="itemAmountInputField" destination="mpM-DW-bVC" id="WQQ-Vh-VPg"/>
+                        <outlet property="itemNameInputField" destination="Jyd-az-ocj" id="n89-xQ-Ygt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
