@@ -30,17 +30,7 @@ final class NoteListViewController: UIViewController {
         super.viewWillAppear(animated)
         
         notesList = loadNotesList(forKey: "notesList") ?? []
-        notesList = notesList.sorted { (item1, item2) -> Bool in
-            if item1.title == item2.title {
-                if item1.linkedShoppingItems?.count == item2.linkedShoppingItems?.count {
-                    return item1.id > item2.id
-                } else {
-                    return item1.linkedShoppingItems?.count ?? 0 > item2.linkedShoppingItems?.count ?? 0
-                }
-            } else {
-                return item1.title < item2.title
-            }
-        }
+        notesListTableView.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -50,6 +40,15 @@ final class NoteListViewController: UIViewController {
     }
     
     // MARK: - Actions
+    
+    @IBAction func addNewNoteButtonHandler() {
+        let addNewNoteStoryboard = UIStoryboard(name: "NoteManager", bundle: nil)
+        let addNewNoteViewController = addNewNoteStoryboard.instantiateViewController(
+            withIdentifier: String(describing: NoteManagerViewController.self)
+        ) as! NoteManagerViewController
+        
+        navigationController?.pushViewController(addNewNoteViewController, animated: true)
+    }
     
     // MARK: - Utility methods
     

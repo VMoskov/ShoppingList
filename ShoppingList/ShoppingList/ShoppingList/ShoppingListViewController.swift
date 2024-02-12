@@ -32,13 +32,6 @@ final class ShoppingListViewController: UIViewController {
         super.viewWillAppear(animated)
         
         shoppingList = loadShoppingList(forKey: "shoppingList") ?? []
-        shoppingList = shoppingList.sorted { (item1, item2) -> Bool in
-            if item1.name == item2.name {
-                return item1.id > item2.id
-            } else {
-                return item1.name < item2.name
-            }
-        }
         shoppingListTableView.reloadData()
     }
     
@@ -177,7 +170,15 @@ extension UIViewController {
             do {
                 let decoder = JSONDecoder()
                 let item = try decoder.decode([ShoppingListItem].self, from: data)
-                return item
+                
+                return item.sorted { (item1, item2) -> Bool in
+                    if item1.name.lowercased() == item2.name.lowercased() {
+                        return item1.id > item2.id
+                    } else {
+                        return item1.name.lowercased() < item2.name.lowercased()
+                    }
+                }
+                
             } catch {
                 print("Error decoding item: \(error)")
             }
@@ -200,7 +201,19 @@ extension UIViewController {
             do {
                 let decoder = JSONDecoder()
                 let item = try decoder.decode([NoteItem].self, from: data)
-                return item
+                
+                return item.sorted { (item1, item2) -> Bool in
+                    if item1.title.lowercased() == item2.title.lowercased() {
+                        if item1.linkedShoppingItems?.count == item2.linkedShoppingItems?.count {
+                            return item1.id > item2.id
+                        } else {
+                            return item1.linkedShoppingItems?.count ?? 0 > item2.linkedShoppingItems?.count ?? 0
+                        }
+                    } else {
+                        return item1.title < item2.title
+                    }
+                }
+                
             } catch {
                 print("Error decoding item: \(error)")
             }
