@@ -126,7 +126,7 @@ final class ItemManagerViewController: UIViewController {
         }
         
         if edit {
-            if itemName == item?.name && Decimal(string: itemAmount) == item?.amount {
+            if itemName == item?.name && Double(itemAmount) == item?.amount {
                 navigationController?.popViewController(animated: true)
                 return
             }
@@ -213,14 +213,14 @@ final class ItemManagerViewController: UIViewController {
     }
     
     private func addNewItem(_ itemName: String, _ itemAmount: String) {
-        let newItem = ShoppingListItem(name: itemName, amount: Decimal(string: itemAmount)!)
+        let newItem = ShoppingListItem(name: itemName, amount: Double(itemAmount)!)
         shoppingList.append(newItem)
     }
     
     private func editItem(_ itemName: String, _ itemAmount: String) {
         guard var item, let itemIndex else { return }
         item.name = itemName
-        item.amount = Decimal(string: itemAmount)!
+        item.amount = Double(itemAmount)!
         shoppingList[itemIndex] = item
     }
     

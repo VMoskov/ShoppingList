@@ -12,10 +12,10 @@ struct ShoppingListItem: Codable, Equatable {
     
     let id: Int
     var name: String
-    var amount: Decimal
+    var amount: Double
     let creationDateTime: Date
 
-    init(name: String, amount: Decimal) {
+    init(name: String, amount: Double) {
         self.id = ShoppingListItem.idSequence.next()!
         self.name = name
         self.amount = amount
