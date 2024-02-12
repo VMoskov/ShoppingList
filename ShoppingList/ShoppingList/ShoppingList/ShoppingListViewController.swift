@@ -73,6 +73,15 @@ final class ShoppingListViewController: UIViewController {
             alpha: 1
         )
         setUpNotesButton()
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = UIColor(
+            red: 198/255,
+            green: 198/255,
+            blue: 200/255,
+            alpha: 1
+        )
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        navigationController?.navigationBar.standardAppearance = appearance
     }
     
     private func setUpNotesButton() {
