@@ -167,7 +167,11 @@ extension ShoppingListViewController: UITableViewDelegate {
     
 }
 
+// MARK: - UIViewController extension
+
 extension UIViewController {
+    
+    // MARK: - UserDefaults read/write operations
     
     func saveShoppingList(_ item: [ShoppingListItem], forKey key: String) {
         do {
@@ -234,6 +238,8 @@ extension UIViewController {
         }
         return nil
     }
+    
+    // MARK: - Animations
     
     func shakeInputFields(forView animatingView: UIStackView) {
         let shakeAnimation = CABasicAnimation(keyPath: "position")
