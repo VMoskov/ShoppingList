@@ -123,8 +123,13 @@ final class ShoppingListViewController: UIViewController {
             NoteItem(title: "Water the plants")
         ]
         
-        saveShoppingList(shoppingListItems, forKey: "shoppingList")
-        saveNotesList(noteItems, forKey: "notesList")
+        shoppingList = loadShoppingList(forKey: "shoppingList") ?? []
+        let notesList = loadNotesList(forKey: "notesList") ?? []
+        
+        if notesList.isEmpty && shoppingListItems.isEmpty {
+            saveShoppingList(shoppingListItems, forKey: "shoppingList")
+            saveNotesList(noteItems, forKey: "notesList")
+        }
     }
     
 }
