@@ -30,14 +30,17 @@ final class ItemManagerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpAddButton(enabled: false)
+        setUpAddButton(enabled: edit)
         if edit {
             addButton.setTitle("Save", for: .normal)
             // check why the font is not working
             addButton.titleLabel?.font = UIFont(name: ".SFUI-Bold", size: 21.0)
         }
         setUpNavigationBar()
-//        self.hideKeyboardWhenTappedAround()
+
+        // Add tap gesture recognizer
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        view.addGestureRecognizer(tapGesture)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -183,6 +186,12 @@ final class ItemManagerViewController: UIViewController {
         alertController.addAction(deleteAction)
         
         present(alertController, animated: true, completion: nil)
+    }
+    
+    @objc func handleTap() {
+        itemNameInputField.resignFirstResponder()
+        itemAmountInputField.resignFirstResponder()
+        setUpAddButton(enabled: true)
     }
     
     // MARK: - Utility methods

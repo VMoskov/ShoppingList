@@ -39,7 +39,10 @@ final class NoteManagerViewController: UIViewController {
         }
         setUpTableView()
         setUpNavigationBar()
-//        self.hideKeyboardWhenTappedAround()
+
+        // Add tap gesture recognizer
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        view.addGestureRecognizer(tapGesture)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -170,6 +173,12 @@ final class NoteManagerViewController: UIViewController {
         alertController.addAction(deleteAction)
         
         present(alertController, animated: true, completion: nil)
+    }
+    
+    @objc func handleTap() {
+        noteTitleInputField.resignFirstResponder()
+        noteTextInputField.resignFirstResponder()
+        setUpAddButton(enabled: true)
     }
     
     // MARK: - Utility methods
