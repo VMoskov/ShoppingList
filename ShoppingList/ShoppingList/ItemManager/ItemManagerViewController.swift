@@ -15,6 +15,7 @@ final class ItemManagerViewController: UIViewController {
     
     private var shoppingList = [ShoppingListItem]()
     private var item: ShoppingListItem?
+    private var notesList = [NoteItem]()
     var itemIndex: Int?
     var edit: Bool = false
     
@@ -43,13 +44,7 @@ final class ItemManagerViewController: UIViewController {
         super.viewWillAppear(animated)
         
         shoppingList = loadShoppingList(forKey: "shoppingList") ?? []
-        shoppingList = shoppingList.sorted { (item1, item2) -> Bool in
-            if item1.name == item2.name {
-                return item1.id > item2.id // Sort by id in descending order if names are equal
-            } else {
-                return item1.name < item2.name // Sort by name in ascending order
-            }
-        }
+        notesList = loadNotesList(forKey: "notesList") ?? []
         if edit {
             item = shoppingList[itemIndex!]
             setUpInputFields()
@@ -60,6 +55,7 @@ final class ItemManagerViewController: UIViewController {
         super.viewWillDisappear(animated)
         
         saveShoppingList(shoppingList, forKey: "shoppingList")
+        saveNotesList(notesList, forKey: "notesList")
     }
 
     // MARK: - Actions
@@ -171,6 +167,15 @@ final class ItemManagerViewController: UIViewController {
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { [weak self] _ in
             guard let self else { return }
             shoppingList.remove(at: itemIndex)
+            
+            // delete the ShoppingItemList from every note it is on
+            var temporaryNoteList = [NoteItem]()
+            for var noteItem in notesList {
+                noteItem.removeLinkedItem(item)
+                temporaryNoteList.append(noteItem)
+            }
+            notesList = temporaryNoteList
+            
             self.navigationController?.popViewController(animated: true)
         }
         
