@@ -10,12 +10,12 @@ import UIKit
 
 final class ListTableViewCell: UITableViewCell {
     
-    // MARK: -Outlets
+    // MARK: - Outlets
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
     
-    // MARK: -Utility methods
+    // MARK: - Utility methods
     
     override func prepareForReuse() {
         super.prepareForReuse()

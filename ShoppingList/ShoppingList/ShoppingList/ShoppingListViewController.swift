@@ -55,6 +55,15 @@ final class ShoppingListViewController: UIViewController {
         shoppingListTableView.reloadData()
     }
     
+    @objc func pushNoteListViewController() {
+        let noteListStoryboard = UIStoryboard(name: "NoteList", bundle: nil)
+        let noteListViewController = noteListStoryboard.instantiateViewController(
+            withIdentifier: String(describing: NoteListViewController.self)
+        ) as! NoteListViewController
+        
+        navigationController?.pushViewController(noteListViewController, animated: true)
+    }
+    
     // MARK: - Utility methods
     
     private func setUpTableView() {
@@ -70,6 +79,12 @@ final class ShoppingListViewController: UIViewController {
             blue: 90/255,
             alpha: 1
         )
+        setUpNotesButton()
+    }
+    
+    private func setUpNotesButton() {
+        let notesButton = UIBarButtonItem(title: "Notes", style: .plain, target: self, action: #selector(pushNoteListViewController))
+        navigationItem.rightBarButtonItem = notesButton
     }
     
     private func pushAddNewItemViewController() {
@@ -112,7 +127,7 @@ final class ShoppingListViewController: UIViewController {
     
 }
 
-//MARK: - Table View datasource
+// MARK: - Table View datasource
 
 extension ShoppingListViewController: UITableViewDataSource {
     
