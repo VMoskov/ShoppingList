@@ -134,11 +134,15 @@ extension ItemPickerViewController: UITableViewDelegate {
 //        selectedItemsIndexes.append(indexPath.row)
         let cell = tableView.cellForRow(at: indexPath)
         cell?.backgroundColor = UIColor.lightGray
-        if selectedItemsIndexes.contains(indexPath.row) {
-            selectedItemsIndexes.removeAll { $0 == indexPath.row }
+        
+        let item = filteredItems[indexPath.row]
+        let index = shoppingList.firstIndex(of: item)
+        
+        if selectedItemsIndexes.contains(index!) {
+            selectedItemsIndexes.removeAll { $0 == index! }
         }
         else {
-            selectedItemsIndexes.append(indexPath.row)
+            selectedItemsIndexes.append(index!)
         }
     }
     
@@ -146,11 +150,15 @@ extension ItemPickerViewController: UITableViewDelegate {
 //        selectedItemsIndexes.removeAll { $0 == indexPath.row }
         let cell = tableView.cellForRow(at: indexPath)
         cell?.backgroundColor = UIColor.white
-        if selectedItemsIndexes.contains(indexPath.row) {
-            selectedItemsIndexes.removeAll { $0 == indexPath.row }
+        
+        let item = filteredItems[indexPath.row]
+        let index = shoppingList.firstIndex(of: item)
+        
+        if selectedItemsIndexes.contains(index!) {
+            selectedItemsIndexes.removeAll { $0 == index! }
         }
         else {
-            selectedItemsIndexes.append(indexPath.row)
+            selectedItemsIndexes.append(index!)
         }
     }
     
