@@ -24,6 +24,7 @@ final class NoteListViewController: UIViewController {
         super.viewDidLoad()
         
         setUpTableView()
+        self.title = "Notes"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,13 +42,28 @@ final class NoteListViewController: UIViewController {
     
     // MARK: - Actions
     
-    @IBAction func addNewNoteButtonHandler() {
+    @IBAction private func addNewNoteButtonHandler() {
+        pushAddNewNoteViewController()
+    }
+    
+    private func pushAddNewNoteViewController() {
         let addNewNoteStoryboard = UIStoryboard(name: "NoteManager", bundle: nil)
         let addNewNoteViewController = addNewNoteStoryboard.instantiateViewController(
             withIdentifier: String(describing: NoteManagerViewController.self)
         ) as! NoteManagerViewController
         
         navigationController?.pushViewController(addNewNoteViewController, animated: true)
+    }
+    
+    private func pushEditNoteViewController(forNoteAtIndex index: Int) {
+        let editNoteStoryboard = UIStoryboard(name: "NoteManager", bundle: nil)
+        let editNoteViewController = editNoteStoryboard.instantiateViewController(
+            withIdentifier: String(describing: NoteManagerViewController.self)
+        ) as! NoteManagerViewController
+        
+        editNoteViewController.noteIndex = index
+        editNoteViewController.edit = true
+        navigationController?.pushViewController(editNoteViewController, animated: true)
     }
     
     // MARK: - Utility methods
@@ -88,7 +104,7 @@ extension NoteListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-//        pushEditItemViewController(forItemAtIndex: indexPath.row)
+        pushEditNoteViewController(forNoteAtIndex: indexPath.row)
     }
     
 }

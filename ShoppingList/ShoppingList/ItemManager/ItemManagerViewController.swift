@@ -20,10 +20,10 @@ final class ItemManagerViewController: UIViewController {
     
     // MARK: - Outlets
     
-    @IBOutlet weak var itemAmountInputField: UITextField!
-    @IBOutlet weak var itemNameInputField: UITextField!
-    @IBOutlet weak var addButton: UIButton!
-    @IBOutlet weak var animatingView: UIStackView!
+    @IBOutlet private weak var animatingView: UIStackView!
+    @IBOutlet private weak var itemAmountInputField: UITextField!
+    @IBOutlet private weak var itemNameInputField: UITextField!
+    @IBOutlet private weak var addButton: UIButton!
     
     // MARK: - Lifecycle methods
     
@@ -101,7 +101,7 @@ final class ItemManagerViewController: UIViewController {
             !itemName.isEmpty,
             !itemAmount.isEmpty
         else {
-            shakeInputFields()
+            shakeInputFields(forView: animatingView)
             let alert = UIAlertController(
                 title: "Error",
                 message: "Item name and amount are mandatory!",
@@ -156,7 +156,7 @@ final class ItemManagerViewController: UIViewController {
     }
     
     @objc func deleteItem(_ sender: UIBarButtonItem) {
-        guard var item, let itemIndex else { return }
+        guard let item, let itemIndex else { return }
         let alertController = UIAlertController(
             title: "Warning!",
             message: "Are you sure you want to delete \"\(item.name)\"?\nThis action can not be undone!",
@@ -234,17 +234,6 @@ final class ItemManagerViewController: UIViewController {
         
         let deleteButtonBarButtonItem = UIBarButtonItem(customView: deleteButton)
         navigationItem.rightBarButtonItem = deleteButtonBarButtonItem
-    }
-    
-    private func shakeInputFields() {
-        let shakeAnimation = CABasicAnimation(keyPath: "position")
-        shakeAnimation.duration = 0.07
-        shakeAnimation.repeatCount = 4
-        shakeAnimation.autoreverses = true
-        shakeAnimation.fromValue = NSValue(cgPoint: CGPoint(x: animatingView.center.x - 10, y: animatingView.center.y))
-        shakeAnimation.toValue = NSValue(cgPoint: CGPoint(x: animatingView.center.x + 10, y: animatingView.center.y))
-            
-        animatingView.layer.add(shakeAnimation, forKey: "position")
     }
     
 }

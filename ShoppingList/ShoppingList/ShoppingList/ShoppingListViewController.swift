@@ -210,7 +210,7 @@ extension UIViewController {
                             return item1.linkedShoppingItems?.count ?? 0 > item2.linkedShoppingItems?.count ?? 0
                         }
                     } else {
-                        return item1.title < item2.title
+                        return item1.title.lowercased() < item2.title.lowercased()
                     }
                 }
                 
@@ -221,5 +221,15 @@ extension UIViewController {
         return nil
     }
     
+    func shakeInputFields(forView animatingView: UIStackView) {
+        let shakeAnimation = CABasicAnimation(keyPath: "position")
+        shakeAnimation.duration = 0.07
+        shakeAnimation.repeatCount = 4
+        shakeAnimation.autoreverses = true
+        shakeAnimation.fromValue = NSValue(cgPoint: CGPoint(x: animatingView.center.x - 10, y: animatingView.center.y))
+        shakeAnimation.toValue = NSValue(cgPoint: CGPoint(x: animatingView.center.x + 10, y: animatingView.center.y))
+            
+        animatingView.layer.add(shakeAnimation, forKey: "position")
+    }
     
 }

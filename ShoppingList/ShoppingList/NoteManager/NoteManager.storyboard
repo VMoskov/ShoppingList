@@ -35,6 +35,10 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="noteTitleEditingChanged" destination="Y6W-OH-hqX" eventType="editingChanged" id="bCk-jc-40u"/>
+                                                    <action selector="noteTitleEditingDidEnd" destination="Y6W-OH-hqX" eventType="editingDidEnd" id="3hf-eG-oEi"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -80,6 +84,9 @@
                                                     <fontDescription key="titleFontDescription" type="boldSystem" pointSize="18"/>
                                                     <color key="baseForegroundColor" red="0.20392156859999999" green="0.42659751400000001" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="itemPickerhandler" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Uxk-Xb-gHd"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -88,42 +95,54 @@
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="aCq-oj-D7R">
                                                 <rect key="frame" x="0.0" y="0.0" width="373" height="120"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="ListTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="aOJ-gX-ZVq" customClass="ListTableViewCell" customModule="ShoppingList" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="50" width="373" height="41"/>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="ListTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ListTableViewCell" id="aOJ-gX-ZVq" customClass="ListTableViewCell" customModule="ShoppingList" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="50" width="373" height="61"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aOJ-gX-ZVq" id="ncA-Pa-yGO">
-                                                            <rect key="frame" x="0.0" y="0.0" width="373" height="41"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="373" height="61"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2e2-TP-BHq">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="373" height="41"/>
+                                                                    <rect key="frame" x="10" y="10" width="353" height="41"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Item Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PbB-eI-B4N">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="373" height="20.333333333333332"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="353" height="20.333333333333332"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gTU-Jo-tb2">
-                                                                            <rect key="frame" x="0.0" y="20.333333333333329" width="373" height="20.666666666666671"/>
+                                                                            <rect key="frame" x="0.0" y="20.333333333333329" width="353" height="20.666666666666671"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                     </subviews>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                            <integer key="value" value="10"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
                                                                 </stackView>
                                                             </subviews>
                                                             <constraints>
-                                                                <constraint firstItem="2e2-TP-BHq" firstAttribute="top" secondItem="ncA-Pa-yGO" secondAttribute="top" id="2TS-fC-LXc"/>
-                                                                <constraint firstAttribute="bottom" secondItem="2e2-TP-BHq" secondAttribute="bottom" id="Qe6-QX-goe"/>
-                                                                <constraint firstAttribute="trailing" secondItem="2e2-TP-BHq" secondAttribute="trailing" id="Tkk-lh-wZW"/>
-                                                                <constraint firstItem="2e2-TP-BHq" firstAttribute="leading" secondItem="ncA-Pa-yGO" secondAttribute="leading" id="aT6-8S-h2l"/>
-                                                                <constraint firstAttribute="trailing" secondItem="2e2-TP-BHq" secondAttribute="trailing" id="gSW-7h-OKq"/>
-                                                                <constraint firstItem="2e2-TP-BHq" firstAttribute="leading" secondItem="ncA-Pa-yGO" secondAttribute="leading" id="vci-fD-TQJ"/>
+                                                                <constraint firstItem="2e2-TP-BHq" firstAttribute="top" secondItem="ncA-Pa-yGO" secondAttribute="top" constant="10" id="2TS-fC-LXc"/>
+                                                                <constraint firstAttribute="bottom" secondItem="2e2-TP-BHq" secondAttribute="bottom" constant="10" id="Qe6-QX-goe"/>
+                                                                <constraint firstAttribute="trailing" secondItem="2e2-TP-BHq" secondAttribute="trailing" constant="10" id="Tkk-lh-wZW"/>
+                                                                <constraint firstItem="2e2-TP-BHq" firstAttribute="leading" secondItem="ncA-Pa-yGO" secondAttribute="leading" constant="10" id="aT6-8S-h2l"/>
                                                             </constraints>
                                                         </tableViewCellContentView>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="10"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <outlet property="amountLabel" destination="gTU-Jo-tb2" id="mzH-1j-ifb"/>
+                                                            <outlet property="titleLabel" destination="PbB-eI-B4N" id="lzH-AI-98e"/>
+                                                        </connections>
                                                     </tableViewCell>
                                                 </prototypes>
                                             </tableView>
@@ -154,6 +173,9 @@
                                     <fontDescription key="titleFontDescription" type="boldSystem" pointSize="21"/>
                                     <color key="baseBackgroundColor" red="0.20392156859999999" green="0.42659751400000001" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="addButtonHandler" destination="Y6W-OH-hqX" eventType="touchUpInside" id="SSg-UM-qJX"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
@@ -168,6 +190,13 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="A77-5z-VdZ" secondAttribute="bottom" id="iw2-bC-uHz"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="addButton" destination="A77-5z-VdZ" id="Ovc-Ou-sCC"/>
+                        <outlet property="animatingView" destination="Jhw-cD-FSH" id="NEq-YT-cIm"/>
+                        <outlet property="noteTextInputField" destination="Mku-lE-MNE" id="VTr-f3-8Gr"/>
+                        <outlet property="noteTitleInputField" destination="Jyd-az-ocj" id="VOd-1F-tyD"/>
+                        <outlet property="selectedItemsTableView" destination="aCq-oj-D7R" id="sBx-wl-f3S"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

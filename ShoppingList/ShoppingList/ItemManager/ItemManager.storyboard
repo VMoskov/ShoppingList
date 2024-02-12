@@ -96,7 +96,7 @@
                     </view>
                     <connections>
                         <outlet property="addButton" destination="A77-5z-VdZ" id="2h9-Yw-wQc"/>
-                        <outlet property="animatingView" destination="lEc-7F-ROC" id="7JW-QM-wSP"/>
+                        <outlet property="animatingView" destination="lEc-7F-ROC" id="Z17-5g-igP"/>
                         <outlet property="itemAmountInputField" destination="mpM-DW-bVC" id="WQQ-Vh-VPg"/>
                         <outlet property="itemNameInputField" destination="Jyd-az-ocj" id="n89-xQ-Ygt"/>
                     </connections>

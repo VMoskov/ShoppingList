@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ShoppingListItem: Codable {
+struct ShoppingListItem: Codable, Equatable {
     private static var idSequence = sequence(first: 1, next: { $0 + 1 })
     
     let id: Int
@@ -21,4 +21,11 @@ struct ShoppingListItem: Codable {
         self.amount = amount
         self.creationDateTime = Date()
     }
+    
+    static func == (lhs: ShoppingListItem, rhs: ShoppingListItem) -> Bool {
+        return lhs.name == rhs.name &&
+               lhs.amount == rhs.amount &&
+               lhs.id == rhs.id &&
+               lhs.creationDateTime == rhs.creationDateTime
+        }
 }

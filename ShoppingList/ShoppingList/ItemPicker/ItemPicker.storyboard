@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="h2X-br-c6d">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
@@ -8,19 +8,29 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Shopping List View Controller-->
+        <!--Item Picker View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="ShoppingListViewController" id="Y6W-OH-hqX" customClass="ShoppingListViewController" customModule="ShoppingList" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ItemPickerViewController" id="Y6W-OH-hqX" customClass="ItemPickerViewController" customModule="ShoppingList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="f0v-7J-MWm">
-                                <rect key="frame" x="10" y="103" width="373" height="715"/>
+                                <rect key="frame" x="10" y="59" width="373" height="759"/>
                                 <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Search" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ATg-h1-DIf">
+                                        <rect key="frame" x="0.0" y="0.0" width="373" height="34"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="searchBarDidChange" destination="Y6W-OH-hqX" eventType="editingChanged" id="Ksr-nE-6NS"/>
+                                            <action selector="searchBarEditingDidBegin" destination="Y6W-OH-hqX" eventType="editingDidBegin" id="DJa-nI-ICH"/>
+                                        </connections>
+                                    </textField>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="FTi-xd-W72">
-                                        <rect key="frame" x="0.0" y="0.0" width="373" height="665"/>
+                                        <rect key="frame" x="0.0" y="34" width="373" height="725"/>
                                         <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                         <color key="separatorColor" systemColor="opaqueSeparatorColor"/>
                                         <prototypes>
@@ -103,20 +113,6 @@
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fla-7a-jNB">
-                                        <rect key="frame" x="0.0" y="665" width="373" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="aVQ-2a-cP3"/>
-                                        </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Add new item" cornerStyle="capsule">
-                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="21"/>
-                                            <color key="baseBackgroundColor" red="0.20392156859999999" green="0.42659751404285712" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="handleAddNewItemButton" destination="Y6W-OH-hqX" eventType="touchUpInside" id="kSI-0J-PTb"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -131,30 +127,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="fOd-sb-7Tg"/>
                     <connections>
-                        <outlet property="shoppingListTableView" destination="FTi-xd-W72" id="MQI-tg-pmt"/>
+                        <outlet property="searchBar" destination="ATg-h1-DIf" id="F5a-IS-mf0"/>
+                        <outlet property="shoppingListTableView" destination="FTi-xd-W72" id="UfX-U4-rVo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="901.52671755725191" y="3.5211267605633805"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="22m-JF-5PM">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="h2X-br-c6d" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="INo-zD-t74">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="AVs-O7-RiG"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jhn-8K-A9B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-25.190839694656489" y="3.5211267605633805"/>
         </scene>
     </scenes>
     <resources>

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		441F6A00E8DC29A5A11F7638 /* Pods_invariant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A2CDD002EE831504E33DF3F /* Pods_invariant.framework */; };
 		9D1E7AD42B7A2E4700828558 /* NoteManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1E7AD32B7A2E4700828558 /* NoteManagerViewController.swift */; };
+		9D1E7AD62B7A7ECE00828558 /* ItemPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1E7AD52B7A7ECE00828558 /* ItemPickerViewController.swift */; };
+		9D1E7AD82B7A7EE000828558 /* ItemPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D1E7AD72B7A7EE000828558 /* ItemPicker.storyboard */; };
 		9D550FB12B79A0EA00447715 /* NoteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D550FB02B79A0EA00447715 /* NoteItem.swift */; };
 		9D550FB32B7A1E3800447715 /* NoteManager.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D550FB22B7A1E3800447715 /* NoteManager.storyboard */; };
 		9D550FB62B7A1E8300447715 /* NoteList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D550FB52B7A1E8300447715 /* NoteList.storyboard */; };
@@ -32,6 +34,8 @@
 		2431EED3DC412205E8C6E218 /* Pods-invariant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-invariant.debug.xcconfig"; path = "Target Support Files/Pods-invariant/Pods-invariant.debug.xcconfig"; sourceTree = "<group>"; };
 		3A2CDD002EE831504E33DF3F /* Pods_invariant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_invariant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D1E7AD32B7A2E4700828558 /* NoteManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteManagerViewController.swift; sourceTree = "<group>"; };
+		9D1E7AD52B7A7ECE00828558 /* ItemPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemPickerViewController.swift; sourceTree = "<group>"; };
+		9D1E7AD72B7A7EE000828558 /* ItemPicker.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ItemPicker.storyboard; sourceTree = "<group>"; };
 		9D550FB02B79A0EA00447715 /* NoteItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteItem.swift; sourceTree = "<group>"; };
 		9D550FB22B7A1E3800447715 /* NoteManager.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NoteManager.storyboard; sourceTree = "<group>"; };
 		9D550FB52B7A1E8300447715 /* NoteList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NoteList.storyboard; sourceTree = "<group>"; };
@@ -95,6 +99,8 @@
 		9D1E7AD22B7A2A5C00828558 /* ItemPicker */ = {
 			isa = PBXGroup;
 			children = (
+				9D1E7AD72B7A7EE000828558 /* ItemPicker.storyboard */,
+				9D1E7AD52B7A7ECE00828558 /* ItemPickerViewController.swift */,
 			);
 			path = ItemPicker;
 			sourceTree = "<group>";
@@ -236,6 +242,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DE29AD12B74D76000D017D3 /* LaunchScreen.storyboard in Resources */,
+				9D1E7AD82B7A7EE000828558 /* ItemPicker.storyboard in Resources */,
 				9DC824052B7543DC001FA6A6 /* ItemManager.storyboard in Resources */,
 				9D550FB32B7A1E3800447715 /* NoteManager.storyboard in Resources */,
 				9D550FB62B7A1E8300447715 /* NoteList.storyboard in Resources */,
@@ -303,6 +310,7 @@
 				9DE29AC72B74D75F00D017D3 /* SceneDelegate.swift in Sources */,
 				9DE29AE22B74DBD900D017D3 /* ShoppingListItem.swift in Sources */,
 				9DE29ADC2B74D97000D017D3 /* ShoppingListViewController.swift in Sources */,
+				9D1E7AD62B7A7ECE00828558 /* ItemPickerViewController.swift in Sources */,
 				9D550FB12B79A0EA00447715 /* NoteItem.swift in Sources */,
 				9DAC1C4E2B74F3A5005E8BC8 /* ListTableViewCell.swift in Sources */,
 			);
