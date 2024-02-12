@@ -111,6 +111,18 @@ final class ItemManagerViewController: UIViewController {
             return
         }
         
+        if Double(itemAmount) ?? 0 < 0 {
+            shakeInputFields(forView: animatingView)
+            let alert = UIAlertController(
+                title: "Error",
+                message: "Item amount must be greater than zero!",
+                preferredStyle: .alert
+            )
+            alert.addAction(UIAlertAction(title: "Ok", style: .default))
+            present(alert, animated: true)
+            return
+        }
+        
         edit ? editItem(itemName, itemAmount) : addNewItem(itemName, itemAmount)
         navigationController?.popViewController(animated: true)
     }
