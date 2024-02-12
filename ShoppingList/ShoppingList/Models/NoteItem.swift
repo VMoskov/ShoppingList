@@ -24,3 +24,12 @@ struct NoteItem: Codable {
         self.creationDateTime = Date()
     }
 }
+
+extension NoteItem {
+    mutating func removeLinkedItem(_ itemToRemove: ShoppingListItem) {
+        if let index = linkedShoppingItems?.firstIndex(where: { $0.id == itemToRemove.id }) {
+            linkedShoppingItems?.remove(at: index)
+        }
+    }
+}
+

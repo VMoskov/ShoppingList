@@ -47,7 +47,6 @@ final class ItemPickerViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        print(selectedItemsIndexes)
         delegate?.didSelectItems(shoppingList.enumerated().filter { selectedItemsIndexes.contains($0.offset) }.map { $0.element })
     }
     
@@ -141,8 +140,6 @@ extension ItemPickerViewController: UITableViewDelegate {
         else {
             selectedItemsIndexes.append(indexPath.row)
         }
-        print("select")
-        print(selectedItemsIndexes)
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
@@ -155,8 +152,6 @@ extension ItemPickerViewController: UITableViewDelegate {
         else {
             selectedItemsIndexes.append(indexPath.row)
         }
-        print("deselect")
-        print(selectedItemsIndexes)
     }
     
 }
