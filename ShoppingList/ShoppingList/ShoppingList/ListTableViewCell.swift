@@ -23,6 +23,13 @@ final class ListTableViewCell: UITableViewCell {
     
     func configure(with item:ShoppingListItem) {
         titleLabel.text = item.name
-        amountLabel.text = "Amount: \(item.amount)"
+        
+        let amount = item.amount
+        let formatter = NumberFormatter()
+        formatter.minimumFractionDigits = 0
+        formatter.maximumFractionDigits = 3
+        formatter.decimalSeparator = "."
+        
+        amountLabel.text = "Amount: \(formatter.string(from: NSNumber(value: amount)) ?? "0")"
     }
 }
