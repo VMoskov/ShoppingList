@@ -40,7 +40,7 @@ final class ListTableViewCell: UITableViewCell {
         }
     }
     
-    func configure(with item:ShoppingListItem) {
+    func configure(with item: ShoppingListItem) {
         titleLabel.text = item.name
         
         let amount = item.amount

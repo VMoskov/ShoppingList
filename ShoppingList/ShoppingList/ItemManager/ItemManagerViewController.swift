@@ -221,7 +221,14 @@ final class ItemManagerViewController: UIViewController {
     
     private func setUpInputFields() {
         itemNameInputField.text = item?.name
-        itemAmountInputField.text = "\(item?.amount ?? 0)"
+        
+        let amount = item?.amount
+        let formatter = NumberFormatter()
+        formatter.minimumFractionDigits = 0
+        formatter.maximumFractionDigits = 3
+        formatter.decimalSeparator = "."
+        
+        itemAmountInputField.text = "\(formatter.string(from: NSNumber(value: amount ?? 0)) ?? "0")"
     }
     
     private func addNewItem(_ itemName: String, _ itemAmount: String) {
