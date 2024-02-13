@@ -23,7 +23,31 @@ final class ListTableViewCell: UITableViewCell {
     }
     
     func toggleSelected(_ selected: Bool) {
-        animatingView.backgroundColor = selected ? UIColor.lightGray.withAlphaComponent(0.6) : UIColor.white
+        if selected {
+            animatingView.backgroundColor = UIColor(
+                red: 67/255.0,
+                green: 108/255.0,
+                blue: 90/255.0,
+                alpha: 1.0
+            )
+            titleLabel.textColor = UIColor.white
+            amountLabel.textColor = UIColor.lightGray
+        }
+        else {
+            animatingView.backgroundColor = UIColor.white
+            titleLabel.textColor = UIColor.black
+            amountLabel.textColor = UIColor.darkGray
+        }
+    }
+    
+    func flashSelected() {
+        animatingView.backgroundColor = UIColor(
+            red: 224/255,
+            green: 224/255,
+            blue: 224/255,
+            alpha: 1
+        )
+        animatingView.backgroundColor = UIColor.white
     }
     
     func configure(with item:ShoppingListItem) {
