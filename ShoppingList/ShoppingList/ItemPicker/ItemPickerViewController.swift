@@ -117,6 +117,13 @@ extension ItemPickerViewController: UITableViewDataSource {
         
         let item = filteredItems[indexPath.row]
         cell.configure(with: item)
+        
+        let index = shoppingList.firstIndex(of: item)
+        if selectedItemsIndexes.contains(index!) {
+            cell.toggleSelected(true)
+            tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+        }
+
         return cell
     }
     
@@ -141,7 +148,9 @@ extension ItemPickerViewController: UITableViewDelegate {
                 selectedItemsIndexes.append(index)
             }
             
-            tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+            if let cell = tableView.cellForRow(at: indexPath) as? ListTableViewCell {
+                cell.toggleSelected(true)
+            }
         }
     }
 
@@ -156,7 +165,9 @@ extension ItemPickerViewController: UITableViewDelegate {
                 selectedItemsIndexes.append(index)
             }
             
-            tableView.deselectRow(at: indexPath, animated: true)
+            if let cell = tableView.cellForRow(at: indexPath) as? ListTableViewCell {
+                cell.toggleSelected(false)
+            }
         }
     }
     

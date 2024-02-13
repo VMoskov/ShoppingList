@@ -108,6 +108,7 @@
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <outlet property="amountLabel" destination="haJ-Fr-iGg" id="7Xz-LQ-2kO"/>
+                                                    <outlet property="animatingView" destination="sBJ-Ch-Mb5" id="afu-Qn-ggC"/>
                                                     <outlet property="titleLabel" destination="lEJ-SW-zVA" id="fjM-Yo-cmZ"/>
                                                 </connections>
                                             </tableViewCell>

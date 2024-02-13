@@ -12,13 +12,18 @@ final class ListTableViewCell: UITableViewCell {
     
     // MARK: - Outlets
     
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var amountLabel: UILabel!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var amountLabel: UILabel!
+    @IBOutlet private weak var animatingView: UIStackView!
     
     // MARK: - Utility methods
     
     override func prepareForReuse() {
         super.prepareForReuse()
+    }
+    
+    func toggleSelected(_ selected: Bool) {
+        animatingView.backgroundColor = selected ? UIColor.lightGray.withAlphaComponent(0.6) : UIColor.white
     }
     
     func configure(with item:ShoppingListItem) {
