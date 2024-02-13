@@ -131,34 +131,32 @@ extension ItemPickerViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        selectedItemsIndexes.append(indexPath.row)
-        let cell = tableView.cellForRow(at: indexPath)
-        cell?.backgroundColor = UIColor.lightGray
-        
         let item = filteredItems[indexPath.row]
         let index = shoppingList.firstIndex(of: item)
         
-        if selectedItemsIndexes.contains(index!) {
-            selectedItemsIndexes.removeAll { $0 == index! }
-        }
-        else {
-            selectedItemsIndexes.append(index!)
+        if let index = index {
+            if selectedItemsIndexes.contains(index) {
+                selectedItemsIndexes.removeAll { $0 == index }
+            } else {
+                selectedItemsIndexes.append(index)
+            }
+            
+            tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
         }
     }
-    
+
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-//        selectedItemsIndexes.removeAll { $0 == indexPath.row }
-        let cell = tableView.cellForRow(at: indexPath)
-        cell?.backgroundColor = UIColor.white
-        
         let item = filteredItems[indexPath.row]
         let index = shoppingList.firstIndex(of: item)
         
-        if selectedItemsIndexes.contains(index!) {
-            selectedItemsIndexes.removeAll { $0 == index! }
-        }
-        else {
-            selectedItemsIndexes.append(index!)
+        if let index = index {
+            if selectedItemsIndexes.contains(index) {
+                selectedItemsIndexes.removeAll { $0 == index }
+            } else {
+                selectedItemsIndexes.append(index)
+            }
+            
+            tableView.deselectRow(at: indexPath, animated: true)
         }
     }
     
