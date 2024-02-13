@@ -40,16 +40,6 @@ final class ListTableViewCell: UITableViewCell {
         }
     }
     
-    func flashSelected() {
-        animatingView.backgroundColor = UIColor(
-            red: 224/255,
-            green: 224/255,
-            blue: 224/255,
-            alpha: 1
-        )
-        animatingView.backgroundColor = UIColor.white
-    }
-    
     func configure(with item:ShoppingListItem) {
         titleLabel.text = item.name
         
